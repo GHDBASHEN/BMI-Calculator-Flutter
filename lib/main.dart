@@ -5,7 +5,7 @@ void main() {
 }
 
 class BMICalculatorApp extends StatelessWidget {
-  const BMICalculatorApp({Key? key}) : super(key: key);
+  const BMICalculatorApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +18,9 @@ class BMICalculatorApp extends StatelessWidget {
 
 class BMICalculator extends StatefulWidget {
   @override
+  const BMICalculator({super.key}); // Fix applied here
+  @override
+  // ignore: library_private_types_in_public_api
   _BMICalculatorState createState() => _BMICalculatorState();
 }
 
@@ -60,8 +63,7 @@ class _BMICalculatorState extends State<BMICalculator> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(
-                '/assets/background.jpg'), // Add image to assets folder
+            image: AssetImage('background.jpg'), // Add image to assets folder
             fit: BoxFit.cover,
           ),
         ),
@@ -75,9 +77,9 @@ class _BMICalculatorState extends State<BMICalculator> {
                 style: TextStyle(
                     fontSize: 32,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white),
+                    color: Color.fromARGB(255, 180, 25, 25)),
               ),
-              Image.asset('/assets/bmi_chart.png',
+              Image.asset('bmi_chart.png',
                   height: 150), // Add this image to assets
               const SizedBox(height: 20),
               const Text('Height (meters)',
@@ -101,8 +103,9 @@ class _BMICalculatorState extends State<BMICalculator> {
                   ),
                   const SizedBox(width: 12),
                   Text(height.toStringAsFixed(2),
-                      style:
-                          const TextStyle(fontSize: 24, color: Colors.white)),
+                      style: const TextStyle(
+                          fontSize: 24,
+                          color: Color.fromARGB(255, 153, 33, 33))),
                   const SizedBox(width: 12),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
@@ -174,7 +177,8 @@ class _BMICalculatorState extends State<BMICalculator> {
               const SizedBox(height: 16.0),
               Text(
                 result,
-                style: const TextStyle(fontSize: 20.0, color: Colors.white),
+                style: const TextStyle(
+                    fontSize: 20.0, color: Color.fromARGB(255, 177, 8, 8)),
                 textAlign: TextAlign.center,
               ),
             ],
